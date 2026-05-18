@@ -1,0 +1,82 @@
+classDiagram
+    Cliente "1" --> "1..*" Vehiculo
+    Cliente "0..*" --> "0..1" Aseguradora
+    Cliente "1" --> "0..*" Presupuesto
+    Presupuesto "0..*" --> "0..1" Aseguradora
+    Presupuesto "1" *-- "0..*" DetalleRepuesto
+    DetalleRepuesto "0..*" --> "1" Repuesto
+    Turno "0..*" --> "1" Presupuesto
+    Turno "0..*" --> "1" Vehiculo
+    Turno "1" --> "0..1" Trabajo
+    Trabajo "0..*" --> "1" Empleado
+    Trabajo "1" --> "1" Factura
+    Factura "0..*" --> "0..1" Aseguradora
+    Factura "1" *-- "0..1" Pago
+
+    class Cliente {
+        -str nombre
+        -str telefono
+        -bool esAsegurado
+    }
+
+    class Vehiculo {
+        -str patente
+        -str marca
+        -str modelo
+        -str color
+    }
+
+    class Aseguradora {
+        -str nombre
+        -str numeroConvenio
+    }
+
+    class Presupuesto {
+        -int numero
+        -datetime fechaEmision
+        -int duracionEstimadaDias
+        -str descripcionArreglos
+        -float montoTotal
+    }
+
+    class DetalleRepuesto {
+        -int cantidad
+        -float subtotal
+    }
+
+    class Repuesto {
+        -str nombre
+        -float precioActual
+    }
+
+    class Turno {
+        -datetime fechaHora
+        -str estado
+    }
+
+    class Trabajo {
+        -datetime fechaIngreso
+        -bool llavesEntregadas
+        -bool documentacionEntregada
+        -str estadoReparacion
+    }
+
+    class Empleado {
+        -str nombre
+        -str legajo
+    }
+
+    class Factura {
+        -int numero
+        -datetime fechaEmision
+        -float montoTotal
+        -str tipoCliente
+        -bool firmaAsegurado
+    }
+
+    class Pago {
+        -datetime fecha
+        -float monto
+        -str metodoPago
+        -str nroCuponPosnet
+    }
