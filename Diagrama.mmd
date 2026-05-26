@@ -17,6 +17,8 @@ classDiagram
         -str nombre
         -str telefono
         -bool esAsegurado
+        +registrarCliente()
+        +modificarDatos()
     }
 
     class Vehiculo {
@@ -24,11 +26,13 @@ classDiagram
         -str marca
         -str modelo
         -str color
+        +registrarVehiculo()
     }
 
     class Aseguradora {
         -str nombre
         -str numeroConvenio
+        +validarPoliza()
     }
 
     class Presupuesto {
@@ -37,21 +41,29 @@ classDiagram
         -int duracionEstimadaDias
         -str descripcionArreglos
         -float montoTotal
+        +calcularMontoTotal()
+        +verificarVigencia()
+        +generarPDF()
     }
 
     class DetalleRepuesto {
         -int cantidad
         -float subtotal
+        +calcularSubtotal()
     }
 
     class Repuesto {
         -str nombre
         -float precioActual
+        +actualizarPrecio()
     }
 
     class Turno {
         -datetime fechaHora
         -str estado
+        +solicitarTurno()
+        +cancelarTurno()
+        +confirmarIngreso()
     }
 
     class Trabajo {
@@ -59,11 +71,15 @@ classDiagram
         -bool llavesEntregadas
         -bool documentacionEntregada
         -str estadoReparacion
+        +iniciarReparacion()
+        +actualizarEstado()
+        +finalizarTrabajo()
     }
 
     class Empleado {
         -str nombre
         -str legajo
+        +asignarTrabajo()
     }
 
     class Factura {
@@ -72,6 +88,8 @@ classDiagram
         -float montoTotal
         -str tipoCliente
         -bool firmaAsegurado
+        +generarFactura()
+        +registrarFirmaAsegurado()
     }
 
     class Pago {
@@ -79,4 +97,6 @@ classDiagram
         -float monto
         -str metodoPago
         -str nroCuponPosnet
+        +procesarPago()
+        +emitirComprobante()
     }
