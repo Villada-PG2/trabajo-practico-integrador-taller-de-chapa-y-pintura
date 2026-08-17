@@ -19,7 +19,7 @@ class Cliente(BaseModel):
     def registrarCliente(self):
         return f"Cliente {self.nombre} registrado con éxito."
 
-    def modificarDatos(self, nuevoTelefono: str) -> None:
+    def modificarDatos(self, nuevoTelefono: str):
         self.telefono = nuevoTelefono
 
 
@@ -40,7 +40,7 @@ class Repuesto(BaseModel):
 
     @field_validator("precioActual")
     @classmethod
-    def validarPrecio(cls, value: float) -> float:
+    def validarPrecio(cls, value: float):
         if value < 0:
             raise ValueError("El precio del repuesto no puede ser negativo.")
         return value
